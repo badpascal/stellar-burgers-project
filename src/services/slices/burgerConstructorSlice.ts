@@ -1,5 +1,5 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { TConstructorIngredient, TIngredient } from '@utils-types';
+import { PayloadAction, createSlice, nanoid } from '@reduxjs/toolkit';
+import { TConstructorIngredient, TIngredient } from '../../utils/types';
 import { v4 as uuidv4 } from 'uuid';
 
 export interface burgerConstructorState {
@@ -10,7 +10,7 @@ export interface burgerConstructorState {
   error: string | null;
 }
 
-const initialState: burgerConstructorState = {
+export const initialState: burgerConstructorState = {
   burgerConstructor: {
     bun: null,
     ingredients: []
