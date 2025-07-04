@@ -62,7 +62,7 @@ export interface UserState {
   error: string | null;
 }
 
-const initialState: UserState = {
+export const initialState: UserState = {
   isAuthenticated: false,
   loginUserRequest: false,
   user: null,
@@ -80,10 +80,8 @@ const userSlice = createSlice({
     userNameSelector: (state) => state.user?.name || '',
     userEmailSelector: (state) => state.user?.email || '',
     userSelector: (state) => state.user,
-
     userOrdersSelector: (state) => state.orders,
     ordersRequestSelector: (state) => state.orders,
-
     errorSelector: (state) => state.error
   },
   reducers: {
@@ -106,13 +104,11 @@ const userSlice = createSlice({
         state.loginUserRequest = false;
         state.isAuthenticated = true;
       })
-
       .addCase(logoutUserThunk.pending, (state) => {
         state.user = null;
         state.loginUserRequest = false;
         state.isAuthenticated = false;
       })
-
       .addCase(getUserThunk.pending, (state) => {
         state.loginUserRequest = true;
       })
@@ -126,7 +122,6 @@ const userSlice = createSlice({
         state.loginUserRequest = false;
         state.isAuthenticated = true;
       })
-
       .addCase(registerUserThunk.pending, (state) => {
         state.isAuthenticated = false;
         state.loginUserRequest = true;
@@ -141,7 +136,6 @@ const userSlice = createSlice({
         state.loginUserRequest = false;
         state.isAuthenticated = true;
       })
-
       .addCase(updateUserThunk.pending, (state) => {
         state.loginUserRequest = true;
       })
@@ -154,7 +148,6 @@ const userSlice = createSlice({
         state.loginUserRequest = false;
         state.isAuthenticated = true;
       })
-
       .addCase(getOrdersThunk.pending, (state) => {
         state.ordersRequest = true;
       })
@@ -177,10 +170,8 @@ export const {
   userEmailSelector,
   userSelector,
   loginUserRequestSelector,
-
   userOrdersSelector,
   ordersRequestSelector,
-
   errorSelector
 } = userSlice.selectors;
 
